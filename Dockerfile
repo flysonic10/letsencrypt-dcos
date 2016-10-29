@@ -5,8 +5,10 @@ ENV DEBIAN_FRONTEND=noninteractive
 ENV CERTBOT_VERSION=0.8.1
 RUN apt-get update \
   && apt-get install -y unzip curl python-pip \
+  && apt-get install -y --no-install-recommends apt-utils \
   && pip install --upgrade pip \
   && pip install virtualenv --upgrade \
+  && pip install simplejson \
   && curl -Ls -o /certbot.zip https://github.com/certbot/certbot/archive/v${CERTBOT_VERSION}.zip \
   && unzip certbot.zip \
   && mv certbot-${CERTBOT_VERSION} certbot \
